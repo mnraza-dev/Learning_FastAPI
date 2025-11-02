@@ -1,9 +1,9 @@
 from pydentic import BaseModel,EmailStr, AnyUrl
-from typing import Optional, List, Dict
+from typing import Optional, List, Dict, Annotated
 
 class User(BaseModel):
-    name: str = Field(..., min_length=2, max_length=50)
-    age: int = Field(..., gt=0, description="Age must be a positive integer")
+    name: Annotated[str, Field(max_length=50, title="Full Name", description="The user's full name cannot exceed 50 characters", example="Jane Doe")]
+    age: int = Field(..., gt=0, strict=True, description="Age must be a positive integer")
     portfolio: Optional[AnyUrl] = None
     email: EmailStr
     married: bool = False
