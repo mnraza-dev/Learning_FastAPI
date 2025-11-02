@@ -1,10 +1,11 @@
-from pydentic import BaseModel
+from pydentic import BaseModel,EmailStr, AnyUrl
 from typing import Optional, List, Dict
 
 class User(BaseModel):
     name: str
     age: int
-    email: str
+    portfolio: Optional[AnyUrl] = None
+    email: EmailStr
     married: bool = False
     skills: List[str]
     address: Optional[str] = None
