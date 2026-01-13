@@ -20,5 +20,5 @@ def get_single_products(product_id : int):
     }
 
 @app.get("/greet")
-def greet(name:str):
-    return f"Hey! {name}, How are you?"
+def greet(name:str, age:int):
+    return f"Hey! {name}, Your age is {age}"
