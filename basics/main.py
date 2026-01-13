@@ -1,5 +1,7 @@
 from fastapi import FastAPI, Request
 from mockData import products
+from dtos import ProductDTO
+
 app = FastAPI()
 
 @app.get("/")
@@ -32,3 +34,24 @@ def hello(request:Request):
     return {
        "message":  f"Hey! {query_params.get("name")}, You are {query_params.get("age")} years old "
     }
+
+@app.post("/create-product")
+def create_product(product_data: ProductDTO):
+    product_data = product_data.model_dump()
+    products.append(product_data)
+    return {"status":"Product created Successfully!","data":products}
+
+@app.put("/update-product")
+def update_product(product_id: int, product_data: ProductDTO):
+    for index, item in enumerate(products):
+        if product_id == item.get("id"):
+            products[index] = product_data.model_dump()
+            return {
+                "status": "Product updated successfully",
+                "product": products[index]
+            }
+
+    return {
+        "status": "Product not found"
+    }
+
