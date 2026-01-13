@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from mockData import products
 app = FastAPI()
 
@@ -21,4 +21,14 @@ def get_single_products(product_id : int):
 
 @app.get("/greet")
 def greet(name:str, age:int):
-    return f"Hey! {name}, Your age is {age}"
+    return {
+       "message":  f"Hey! {name}, Your age is {age}"
+    }
+
+@app.get("/hello")
+def hello(request:Request):
+    query_params = dict(request.query_params)
+    # print(query_params)
+    return {
+       "message":  f"Hey! {query_params.get("name")}, You are {query_params.get("age")} years old "
+    }
