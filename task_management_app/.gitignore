@@ -13,7 +13,7 @@ venv/
 env/
 
 # Python tooling
-.mypy_cache/
+.mypy_cache/ 
 .pytest_cache/
 .ruff_cache/
 .coverage
