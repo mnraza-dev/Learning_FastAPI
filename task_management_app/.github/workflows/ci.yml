@@ -9,7 +9,6 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-
     services:
       postgres:
         image: postgres:15
@@ -38,7 +37,9 @@ jobs:
         run: pip install uv
 
       - name: Install dependencies
-        run: uv sync --frozen
+        run: |
+          cd task_management_app
+          uv sync --frozen
 
       - name: Set environment variables
         run: |
