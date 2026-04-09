@@ -8,6 +8,10 @@ app = FastAPI()
 def root():
     return {"message": "Hello there"}
 
+@app.get("/")
+def home():
+    return {"message": "Hello new there"}
+
 @app.get("/products")
 def get_products():
     return products
@@ -54,4 +58,5 @@ def update_product(product_id: int, product_data: ProductDTO):
     return {
         "status": "Product not found"
     }
+
 
