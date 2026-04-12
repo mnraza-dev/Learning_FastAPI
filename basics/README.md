@@ -8,4 +8,16 @@
     - PUT
     - PATCH
     - DELETE
-4. 
+4. Folder Structures 
+
+app/
+ ├── main.py
+ ├── core/
+ │     ├── database.py
+ │     ├── config.py
+ │     └── security.py
+ ├── models/
+ ├── schemas/
+ ├── routes/
+ ├── services/
+ └── utils/

@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from .mockData import posts
-from .schemas import Post
+from .schemas.schemas import Post
 
 app = FastAPI()
 

@@ -11,7 +11,6 @@ class Todo(BaseModel):
     title:str
     status: str
 
-
 class Post(BaseModel):
     id:int
     title: str
